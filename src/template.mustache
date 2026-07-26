@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <style>
+      body {
+        font-family: sans-serif
+      }
+
+      h2, a {
+        word-break: break-all;
+        text-decoration: none
+      }
+
+      li {
+        font-size: large
+      }
+
+      ul {
+        padding-inline-end: 40px
+      }
+
+      pre {
+        display: inline
+      }
+    </style>
+  </head>
+  <body>
+    <h2>
+      List of github pages hosted by
+      <a href="https://github.com/{{user}}">{{user}}</a>
+    </h2>
+    <ul>
+      {{#pagesRepos}}
+      <li>
+        <a href="https://github.com/{{user}}/{{name}}">repo</a><pre> </pre>
+        <a href="https://{{user}}.github.io/{{name}}/">page</a><pre> </pre>
+        {{name}}
+      </li>
+      {{/pagesRepos}}
+    </ul>
+  </body>
+</html>
