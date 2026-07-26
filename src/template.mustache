@@ -22,8 +22,8 @@
         padding-inline-end: 40px
       }
 
-      pre {
-        display: inline
+      li a {
+        margin-right: 8px
       }
     </style>
   </head>
@@ -35,8 +35,8 @@
     <ul>
       {{#pagesRepos}}
       <li>
-        <a href="https://github.com/{{user}}/{{name}}">repo</a><pre> </pre>
-        <a href="https://{{user}}.github.io/{{name}}/">page</a><pre> </pre>
+        <a href="https://github.com/{{user}}/{{name}}">repo</a>
+        <a href="https://{{user}}.github.io/{{name}}/">page</a>
         {{name}}
       </li>
       {{/pagesRepos}}
