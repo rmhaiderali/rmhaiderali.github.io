@@ -4,11 +4,12 @@ import mustache from "mustache"
 const user = "rmhaiderali"
 const userPage = user + ".github.io"
 const limit = "500"
+const reposTempFile = "temp/" + user + ".repos.json"
 
 const refresh = false
 
-let data = fs.existsSync("temp/repos.json")
-  ? JSON.parse(fs.readFileSync("temp/repos.json", "utf8"))
+let data = fs.existsSync(reposTempFile)
+  ? JSON.parse(fs.readFileSync(reposTempFile, "utf8"))
   : null
 
 if (refresh || !data) {
@@ -26,12 +27,20 @@ if (refresh || !data) {
   }
 
   fs.mkdirSync("temp", { recursive: true })
-  fs.writeFileSync("temp/repos.json", JSON.stringify(data, null, 2))
+  fs.writeFileSync(reposTempFile, JSON.stringify(data, null, 2))
 }
 
 const pagesRepos = data
   .filter((repo) => repo.has_pages)
   .filter((repo) => repo.name !== userPage)
+
+if (pagesRepos.length === 0) {
+  console.log("No GitHub Pages found for user " + user)
+  process.exit(2)
+}
+
+console.log("Found " + pagesRepos.length + " GitHub Pages for user " + user)
+console.log(pagesRepos.map((repo) => repo.name).join("\n"))
 
 const template = fs.readFileSync("src/template.mustache", "utf8")
 
