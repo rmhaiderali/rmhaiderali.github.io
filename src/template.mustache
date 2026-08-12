@@ -35,18 +35,73 @@
     </style>
   </head>
   <body>
+    {{#githubPages.length}}
     <h2>
       List of github pages hosted by
-      <a href="https://github.com/{{user}}">{{user}}</a>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/{{githubUser}}"
+      >
+        {{githubUser}}
+      </a>
     </h2>
     <ul>
-      {{#pagesRepos}}
+      {{#githubPages}}
       <li>
-        {{name}}<br />
-        <a href="https://github.com/{{user}}/{{name}}">repo</a>
-        <a href="https://{{user}}.github.io/{{name}}/">page</a>
+        {{name}}
+        <br />
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/{{githubUser}}/{{name}}"
+        >
+          repo
+        </a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://{{githubUser}}.github.io/{{name}}/"
+        >
+          page
+        </a>
       </li>
-      {{/pagesRepos}}
+      {{/githubPages}}
     </ul>
+    {{/githubPages.length}}
+    {{#npmPackages.length}}
+    <h2>
+      List of npm packages published by
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.npmjs.com/~{{npmUser}}"
+      >
+        {{npmUser}}
+      </a>
+    </h2>
+    <ul>
+      {{#npmPackages}}
+      <li>
+        {{.}}
+        <br />
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/{{githubUser}}/{{.}}"
+        >
+          repo
+        </a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.npmjs.com/package/{{.}}"
+        >
+          pkg
+        </a>
+      </li>
+      {{/npmPackages}}
+    </ul>
+    {{/npmPackages.length}}
   </body>
 </html>
