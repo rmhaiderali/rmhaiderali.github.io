@@ -83,19 +83,19 @@
     <ul>
       {{#npmPackages}}
       <li>
-        {{.}}
+        {{name}}
         <br />
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/{{githubUser}}/{{.}}"
+          href="https://github.com/{{githubUser}}/{{repo}}"
         >
           repo
         </a>
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.npmjs.com/package/{{.}}"
+          href="https://www.npmjs.com/package/{{name}}"
         >
           pkg
         </a>

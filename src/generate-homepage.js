@@ -71,12 +71,15 @@ if (npmPackages === uncached) {
   }
 }
 
-npmPackages = Object.keys(npmPackages)
+npmPackages = Object.keys(npmPackages).map((pkg) => ({
+  name: pkg,
+  repo: pkg.split("/").pop(),
+}))
 
 console.log(npmPackages.length + " NPM Packages found for user " + npmUser)
 
 if (npmPackages.length)
-  console.log(npmPackages.map((pkg) => "• " + pkg).join("\n"))
+  console.log(npmPackages.map((pkg) => "• " + pkg.name).join("\n"))
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
