@@ -69,6 +69,33 @@
       {{/githubPages}}
     </ul>
     {{/githubPages.length}}
+    {{#cloudflareWorkers.length}}
+    <h2>
+      List of cloudflare workers deployed by {{githubUser}}
+    </h2>
+    <ul>
+      {{#cloudflareWorkers}}
+      <li>
+        {{name}}
+        <br />
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/{{githubUser}}/{{name}}"
+        >
+          repo
+        </a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="{{homepage}}"
+        >
+          worker
+        </a>
+      </li>
+      {{/cloudflareWorkers}}
+    </ul>
+    {{/cloudflareWorkers.length}}
     {{#npmPackages.length}}
     <h2>
       List of npm packages published by

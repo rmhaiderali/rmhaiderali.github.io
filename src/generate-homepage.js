@@ -48,6 +48,19 @@ console.log(githubPages.length + " GitHub Pages found for user " + githubUser)
 if (githubPages.length)
   console.log(githubPages.map((repo) => "• " + repo.name).join("\n"))
 
+console.log()
+
+const cloudflareWorkers = githubRepos.filter((repo) =>
+  repo.homepage?.endsWith(".workers.dev"),
+)
+
+console.log(
+  cloudflareWorkers.length + " Cloudflare Workers found for user " + githubUser,
+)
+
+if (cloudflareWorkers.length)
+  console.log(cloudflareWorkers.map((repo) => "• " + repo.name).join("\n"))
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 console.log()
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,6 +103,7 @@ const doc = mustache.render(template, {
   githubUser,
   npmPackages,
   githubPages,
+  cloudflareWorkers,
 })
 
 fs.mkdirSync("dist", { recursive: true })
